@@ -65,6 +65,9 @@
     "postcss-breakpoints.cjs",
     "postcss-whitespace.cjs"
   ],
+  "exclude": [
+    "**/*.stories.*"
+  ],
   "scripts": {
     "build": "pnpm build:js && pnpm build:css",
     "build:js": "pnpm build:js:cjs && pnpm build:js:esm && pnpm build:js:cjs:types && pnpm build:js:esm:types",
