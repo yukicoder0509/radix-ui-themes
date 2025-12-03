@@ -1,6 +1,23 @@
 import type { Preview } from '@storybook/react-vite';
+// import '../packages/radix-ui-themes/src/styles/index.css';
+// import '../packages/radix-ui-themes/styles.css';
+// import { Theme } from '../packages/radix-ui-themes/src/components/theme';
+import * as React from 'react';
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          maxHeight: '10vh',
+        }}
+      >
+        {/* <Theme> */}
+        <Story />
+        {/* </Theme> */}
+      </div>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {
