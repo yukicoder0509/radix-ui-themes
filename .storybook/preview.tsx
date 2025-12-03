@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
-// import '../packages/radix-ui-themes/src/styles/index.css';
-// import '../packages/radix-ui-themes/styles.css';
-// import { Theme } from '../packages/radix-ui-themes/src/components/theme';
+import '../packages/radix-ui-themes/src/styles/index.css';
+import '../packages/radix-ui-themes/styles.css';
+import { Theme } from '../packages/radix-ui-themes/src/components/theme';
 import * as React from 'react';
 
 const preview: Preview = {
@@ -12,9 +12,9 @@ const preview: Preview = {
           maxHeight: '10vh',
         }}
       >
-        {/* <Theme> */}
-        <Story />
-        {/* </Theme> */}
+        <Theme>
+          <Story />
+        </Theme>
       </div>
     ),
   ],
