@@ -13,11 +13,11 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   stories: [
-    {
-      directory: '../stories',
-      files: '**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)',
-      titlePrefix: 'Examples',
-    },
+    // {
+    // directory: '../stories',
+    // files: '**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)',
+    // titlePrefix: 'Examples',
+    // },
     {
       // Sets the base directory (relative to .storybook/)
       directory: '../packages/radix-ui-themes/src/components',
