@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     {
       directory: '../stories',
       files: '**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)',
-      titlePrefix: 'Stories',
+      titlePrefix: 'Examples',
     },
     {
       // Sets the base directory (relative to .storybook/)

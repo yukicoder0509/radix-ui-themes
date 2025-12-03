@@ -43,3 +43,31 @@ export const Outline: Story = {
     variant: 'outline',
   },
 };
+
+export const Ghost: Story = {
+  args: {
+    ...Solid.args,
+    variant: 'ghost',
+  },
+};
+
+export const Surface: Story = {
+  args: {
+    ...Solid.args,
+    variant: 'surface',
+  },
+};
+
+export const Soft: Story = {
+  args: {
+    ...Solid.args,
+    variant: 'soft',
+  },
+};
+
+export const Classic: Story = {
+  args: {
+    ...Solid.args,
+    variant: 'classic',
+  },
+};
