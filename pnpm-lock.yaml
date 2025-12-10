@@ -20,6 +20,9 @@ importers:
       '@storybook/addon-docs':
         specifier: ^10.1.4
         version: 10.1.4(@types/react@19.0.8)(esbuild@0.25.12)(rollup@4.53.3)(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(vite@7.2.4(@types/node@20.17.16)(yaml@2.7.0))
+      '@storybook/addon-interactions':
+        specifier: ^8.6.14
+        version: 8.6.14(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@storybook/addon-vitest':
         specifier: ^10.1.4
         version: 10.1.4(@vitest/browser-playwright@4.0.14)(@vitest/browser@4.0.14(vite@7.2.4(@types/node@20.17.16)(yaml@2.7.0))(vitest@4.0.14))(@vitest/runner@4.0.14)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(vitest@4.0.14)
@@ -1664,6 +1667,11 @@ packages:
     peerDependencies:
       storybook: ^10.1.4
 
+  '@storybook/addon-interactions@8.6.14':
+    resolution: {integrity: sha512-8VmElhm2XOjh22l/dO4UmXxNOolGhNiSpBcls2pqWSraVh4a670EyYBZsHpkXqfNHo2YgKyZN3C91+9zfH79qQ==}
+    peerDependencies:
+      storybook: ^8.6.14
+
   '@storybook/addon-vitest@10.1.4':
     resolution: {integrity: sha512-QsjtllQZSMRWEQ4ICmrxYgSrYd16C2pZZShg/fT2OUuXaoASJiINz+ljgbaUYyaB8skJJ+wBtUa2/09Rw/P7OA==}
     peerDependencies:
@@ -3210,6 +3218,10 @@ packages:
   pngjs@7.0.0:
     resolution: {integrity: sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow==}
     engines: {node: '>=14.19.0'}
+
+  polished@4.3.1:
+    resolution: {integrity: sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==}
+    engines: {node: '>=10'}
 
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
@@ -5396,6 +5408,15 @@ snapshots:
       - vite
       - webpack
 
+  '@storybook/addon-interactions@8.6.14(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.6.14(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@storybook/test': 8.6.14(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      polished: 4.3.1
+      storybook: 10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      ts-dedent: 2.2.0
+
   '@storybook/addon-vitest@10.1.4(@vitest/browser-playwright@4.0.14)(@vitest/browser@4.0.14(vite@7.2.4(@types/node@20.17.16)(yaml@2.7.0))(vitest@4.0.14))(@vitest/runner@4.0.14)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@10.1.4(@testing-library/dom@10.4.0)(prettier@3.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(vitest@4.0.14)':
     dependencies:
       '@storybook/global': 5.0.0
@@ -7198,6 +7219,10 @@ snapshots:
       fsevents: 2.3.2
 
   pngjs@7.0.0: {}
+
+  polished@4.3.1:
+    dependencies:
+      '@babel/runtime': 7.26.0
 
   possible-typed-array-names@1.0.0: {}
 
