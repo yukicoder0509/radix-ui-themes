@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within, screen } from '@storybook/test';
 import * as React from 'react';
 import * as Popover from './popover';
 import { Button } from './button';
@@ -50,6 +51,21 @@ export const Default: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvas }) => {
+    // Check that the trigger button is rendered
+    const button = canvas.getByRole('button', { name: /open popover/i });
+    await expect(button).toBeInTheDocument();
+
+    // Click the trigger to open the popover
+    await userEvent.click(button);
+
+    // Check that popover content is displayed
+    const popoverTitle = screen.getByText(/popover title/i);
+    await expect(popoverTitle).toBeInTheDocument();
+
+    const contentText = screen.getByText(/this is the popover content/i);
+    await expect(contentText).toBeInTheDocument();
+  },
 };
 
 export const SizeOne: Story = {
@@ -67,6 +83,17 @@ export const SizeOne: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const button = canvas.getByRole('button', { name: /small popover/i });
+    await expect(button).toBeInTheDocument();
+
+    await userEvent.click(button);
+
+    const content = screen.getByText(/compact popover content/i);
+    await expect(content).toBeInTheDocument();
+  },
 };
 
 export const SizeTwo: Story = {
@@ -84,6 +111,15 @@ export const SizeTwo: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button', { name: /medium popover/i });
+    await expect(button).toBeInTheDocument();
+
+    await userEvent.click(button);
+
+    const contentText = screen.getByText(/standard popover content/i);
+    await expect(contentText).toBeInTheDocument();
+  },
 };
 
 export const SizeThree: Story = {
@@ -101,6 +137,15 @@ export const SizeThree: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button', { name: /large popover/i });
+    await expect(button).toBeInTheDocument();
+
+    await userEvent.click(button);
+
+    const contentText = screen.getByText(/large popover content with more space/i);
+    await expect(contentText).toBeInTheDocument();
+  },
 };
 
 export const SizeFour: Story = {
@@ -118,6 +163,17 @@ export const SizeFour: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const button = canvas.getByRole('button', { name: /extra large popover/i });
+    await expect(button).toBeInTheDocument();
+
+    await userEvent.click(button);
+
+    const contentText = screen.getByText(/extra large popover content with even more space/i);
+    await expect(contentText).toBeInTheDocument();
+  },
 };
 
 export const WithClose: Story = {
@@ -145,6 +201,20 @@ export const WithClose: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const openButton = canvas.getByRole('button', { name: /open with close button/i });
+    await userEvent.click(openButton);
+
+    const closeButton = screen.getByRole('button', { name: /^close$/i });
+    await expect(closeButton).toBeInTheDocument();
+
+    await userEvent.click(closeButton);
+
+    // Wait for close animation
+    await new Promise((resolve) => setTimeout(resolve, 300));
+  },
 };
 
 export const CustomWidth: Story = {
@@ -163,6 +233,15 @@ export const CustomWidth: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const button = canvas.getByRole('button', { name: /custom width/i });
+    await userEvent.click(button);
+
+    const content = screen.getByText(/custom width of 300px/i);
+    await expect(content).toBeInTheDocument();
+  },
 };
 
 export const CustomMaxWidth: Story = {
@@ -184,6 +263,15 @@ export const CustomMaxWidth: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const button = canvas.getByRole('button', { name: /custom max width/i });
+    await userEvent.click(button);
+
+    const content = screen.getByText(/custom max width of 200px/i);
+    await expect(content).toBeInTheDocument();
+  },
 };
 
 export const RichContent: Story = {
@@ -199,7 +287,7 @@ export const RichContent: Story = {
       <Popover.Content {...args}>
         <Flex direction="column" gap="3">
           <Text size="2" weight="bold">
-            Settings
+            Settings Popover
           </Text>
           <Box>
             <Text size="2">Enable notifications</Text>
@@ -223,4 +311,32 @@ export const RichContent: Story = {
       </Popover.Content>
     </Popover.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const openButton = canvas.getByRole('button', { name: /rich content/i });
+    await userEvent.click(openButton);
+
+    // Check all rich content elements are present
+    const settingsTitle = screen.getByText(/settings popover/i);
+    await expect(settingsTitle).toBeInTheDocument();
+
+    const notificationsOption = screen.getByText(/enable notifications/i);
+    await expect(notificationsOption).toBeInTheDocument();
+
+    const darkModeOption = screen.getByText(/dark mode/i);
+    await expect(darkModeOption).toBeInTheDocument();
+
+    const cancelButton = screen.getByRole('button', { name: /cancel/i });
+    await expect(cancelButton).toBeInTheDocument();
+
+    const saveButton = screen.getByRole('button', { name: /save/i });
+    await expect(saveButton).toBeInTheDocument();
+
+    // Click save to close
+    await userEvent.click(saveButton);
+
+    // Wait for close animation
+    await new Promise((resolve) => setTimeout(resolve, 300));
+  },
 };
